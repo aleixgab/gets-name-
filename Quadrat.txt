@@ -1,0 +1,44 @@
+//LNK error de linker -- Si no es de compilador
+#include <stdlib.h>
+#include "include\SDL.h"
+#include "include\SDL_render.h"
+#pragma comment (lib, "lib/SDL2.lib")
+#pragma comment (lib, "lib/SDL2main.lib")
+
+int main(int argc, char* args[]) {
+
+	SDL_Init(SDL_INIT_EVERYTHING); //Comença el codic
+
+	SDL_Rect rectangle;
+	SDL_Window* window;
+	SDL_Renderer* renderer;
+
+
+	
+	window = SDL_CreateWindow("Quadrat", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 740, 740, 0);//Crear la pestanya amb les mides que vulguis*/
+
+	/* We must call SDL_CreateRenderer in order for draw calls to affect this window. */
+	renderer = SDL_CreateRenderer(window, -1, 0);
+	SDL_SetRenderDrawColor(renderer, 250, 0, 0, 250);
+	SDL_RenderClear(renderer); // Posa el color a la pantalla
+
+
+	rectangle.x = 50;
+	rectangle.y = 50;
+	rectangle.w = 100;
+	rectangle.h = 100;
+
+	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+	
+	SDL_RenderFillRect(renderer, &rectangle);
+
+	SDL_RenderPresent(renderer);// Mostra la pantalla
+
+	SDL_Delay(50000);
+	
+	SDL_Quit();
+
+	system("pause");
+	return EXIT_SUCCESS;
+}
+
